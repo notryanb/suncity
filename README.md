@@ -1,24 +1,10 @@
-# README
+Ugh, it's been a while since I've done a Rails app from scratch.
+Here are some reminders...
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+`rails db:create`
+`be rake db:test:prepare`
+`be rake db:migrate`
+`rails g migration create_some_table`
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Don't forget to use `.env` and be careful about what you're committing!
