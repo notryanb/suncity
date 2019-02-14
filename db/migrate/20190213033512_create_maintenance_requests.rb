@@ -6,9 +6,10 @@ class CreateMaintenanceRequests < ActiveRecord::Migration[5.2]
       t.references :address, null: false
       t.references :request_status, null: false
       t.references :request_category, null: false
-      t.datetime :completed_on
-      t.text :content, null: false
+      t.string :request_number
       t.text :message, null: false
+      t.text :content, null: false
+      t.datetime :completed_on
 
       t.timestamps
     end

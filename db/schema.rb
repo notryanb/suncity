@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_034621) do
+ActiveRecord::Schema.define(version: 2019_02_14_014455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,10 @@ ActiveRecord::Schema.define(version: 2019_02_13_034621) do
     t.bigint "address_id", null: false
     t.bigint "request_status_id", null: false
     t.bigint "request_category_id", null: false
-    t.datetime "completed_on"
-    t.text "content", null: false
+    t.string "request_number"
     t.text "message", null: false
+    t.text "content", null: false
+    t.datetime "completed_on"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address_id"], name: "index_maintenance_requests_on_address_id"
@@ -47,6 +48,18 @@ ActiveRecord::Schema.define(version: 2019_02_13_034621) do
     t.index ["request_status_id"], name: "index_maintenance_requests_on_request_status_id"
     t.index ["resident_id"], name: "index_maintenance_requests_on_resident_id"
     t.index ["user_id"], name: "index_maintenance_requests_on_user_id"
+  end
+
+  create_table "request_categories", force: :cascade do |t|
+    t.string "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "request_statuses", force: :cascade do |t|
+    t.string "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "residents", force: :cascade do |t|
