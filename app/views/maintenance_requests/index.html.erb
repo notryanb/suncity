@@ -1,5 +1,6 @@
 <div>
-  <%= @maintenance_requests.each do |maintenance_request| %>
-    <div><%= maintenance_request.message %></div>
+  <% @maintenance_requests.each do |maintenance_request| %>
+    <div><strong>Message:</strong> <%= maintenance_request.message %></div>
+    <div><strong>Content:</strong> <%= maintenance_request.content %></div>
   <% end %>
 </div>
