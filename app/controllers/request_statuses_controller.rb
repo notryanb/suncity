@@ -1,4 +1,6 @@
 class RequestStatusesController < ApplicationController
+  before_action :authenticate
+
   def index
     @request_statuses = RequestStatus.all
   end
