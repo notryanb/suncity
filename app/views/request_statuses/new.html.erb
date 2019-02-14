@@ -1,0 +1,12 @@
+<div class="form-container">
+  <%= form_for(@request_status) do |form| %>
+    <div class="input-group">
+      <%= form.label "Status Name:" %>
+      <%= form.text_field :status %>
+    </div>
+
+    <div class="input-group">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
