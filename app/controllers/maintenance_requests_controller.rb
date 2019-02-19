@@ -1,8 +1,10 @@
+include Pagy::Backend
+
 class MaintenanceRequestsController < ApplicationController
   before_action :authenticate
 
   def index
-    @maintenance_requests = MaintenanceRequest.all.order(created_at: "DESC")
+    @pagy, @maintenance_requests = pagy(MaintenanceRequest.all.order(created_at: "DESC"))
   end
 
   def new
