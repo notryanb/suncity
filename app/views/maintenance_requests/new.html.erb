@@ -1,0 +1,32 @@
+<div>
+  <%= form_for @maintenance_request do |form| %>
+    <div>
+      <%= form.label "Category" %>
+      <%= form.collection_select :request_category_id, RequestCategory.order(:category), :id, :category, include_blank: true %>
+    </div>
+    
+    <div>
+      <%= form.label "Status" %>
+      <%= form.collection_select :request_status_id, RequestStatus.order(:status), :id, :status, include_blank: true %>
+    </div>
+    
+    <div>
+      <%= form.label "Request Number" %>
+      <%= form.text_field :request_number %>
+    </div>
+    
+    <div>
+      <%= form.label "Message" %>
+      <%= form.text_field :message %>
+    </div>
+
+    <div>
+      <%= form.label "Content" %>
+      <%= form.text_area :content %>
+    </div>
+
+    <div>
+      <%= form.submit "Submit" %>
+    </div>
+  <% end %>
+</div>

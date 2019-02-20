@@ -1,0 +1,38 @@
+<div>
+  <%= form_for [@resident, @address] do |form| %>
+    <div>
+      <%= form.label "First Name" %>
+      <%= form.text_field :first_name %>
+    </div>
+    
+    <div>
+      <%= form.label "Last Name" %>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= form.label "Email" %>
+      <%= form.text_field :email %>
+    </div>
+
+    <div>
+      <%= form.label "Address" %>
+      <%= form.text_area :address %>
+    </div>
+
+    <div>
+      <%= form.label "Home Phone" %>
+      <%= form.text_area :home_phone %>
+    </div>
+
+    <div>
+      <%= form.label "Cell Phone" %>
+      <%= form.text_area :cell_phone %>
+    </div>
+
+    <div>
+      <%= form.submit "Submit" %>
+    </div>
+  <% end %>
+</div>
+

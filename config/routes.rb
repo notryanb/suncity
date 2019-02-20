@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :maintenance_requests
   resources :request_statuses
   resources :request_categories
+  resources :residents
   resources :user_sessions, only: [:new, :create]
   get "/logout" => "user_sessions#destroy", as: :logout
 end

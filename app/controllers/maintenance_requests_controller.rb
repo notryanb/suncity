@@ -9,6 +9,7 @@ class MaintenanceRequestsController < ApplicationController
 
   def new
     @maintenance_request = MaintenanceRequest.new
+    @resident = Resident.new
   end
 
   def create
@@ -21,7 +22,9 @@ class MaintenanceRequestsController < ApplicationController
   end
 
   def show
-    @maintenance_request = MaintenanceRequest.find_by_id(params[:id])
+    @maintenance_request = MaintenanceRequest
+      .includes(:maintenance_request_notes)
+      .find_by_id(params[:id])
   end
 
   def edit
