@@ -12,6 +12,13 @@ class ResidentsController < ApplicationController
   end
 
   def create
+    @resident = Resident.create(resident_params)
+
+    if @resident.save
+      return redirect_to :root
+    end
+
+    render :new
   end
 
   def edit
@@ -21,5 +28,19 @@ class ResidentsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def resident_params
+    params.require(:resident).permit(
+      :first_name,
+      :last_name,
+      :email,
+      :address,
+      :home_phone,
+      :cell_phone
+    )
+
   end
 end
