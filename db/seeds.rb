@@ -5,3 +5,59 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(
+  email: "notryanb@gmail.com",
+  password: "testing"
+)
+me = User.first
+
+landscaping = RequestCategory.create(category: "Landscaping")
+plumbing = RequestCategory.create(category: "Plumbing")
+hvac = RequestCategory.create(category: "HVAC")
+
+puts "RequestCategory Count: #{RequestCategory.count}"
+
+pending = RequestStatus.create(status: "Pending")
+in_progress = RequestStatus.create(status: "In Progress")
+completed = RequestStatus.create(status: "Completed")
+
+puts "RequestStatus Count: #{RequestStatus.count}"
+puts "Creating Residents"
+
+(0..19).each do |i|
+  resident = Resident.create(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    address: Faker::Address.street_address,
+    home_phone: Faker::PhoneNumber.phone_number,
+    cell_phone: Faker::PhoneNumber.cell_phone
+  )
+end
+
+puts "Created #{Resident.count} Residents"
+puts "Creating MaintenanceRequests"
+
+(0..1000).each do |i|
+  rnd_num = rand(1..20)
+  resident = Resident.find(rnd_num)
+
+  rnd_num_2 = rand(1..3)
+  category = RequestCategory.find(rnd_num_2)
+  status = RequestStatus.find(rnd_num_2)
+
+  # MaintenanceRequest
+  MaintenanceRequest.create(
+    user_id: me.id,
+    resident_id: resident.id,
+    request_status_id: status.id,
+    request_category_id: category.id,
+    request_number: Faker::Number.number(10),
+    message: Faker::Lorem.sentence,
+    content: Faker::Lorem.paragraph(4)
+  )
+end
+
+puts "Done!"
+

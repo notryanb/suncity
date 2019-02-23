@@ -1,0 +1,13 @@
+<div>
+  <div>Created: <%= @maintenance_request.created_at.strftime("%m/%d/%Y %I:%M%p") %></div>
+  <div>Last Updated: <%= @maintenance_request.updated_at.strftime("%m/%d/%Y %I:%M%p")%></div>
+  <div>Request #: <%= @maintenance_request.request_number %></div>
+  <div>Message: <%= @maintenance_request.message %>
+  <div>Content: <%= @maintenance_request.content %>
+</div>
+
+<div>
+  <% @maintenance_request.maintenance_request_notes.each do |note| %>
+    <%= note.content %> 
+  <% end %>
+</div>
