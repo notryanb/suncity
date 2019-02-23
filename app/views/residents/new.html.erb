@@ -1,5 +1,14 @@
 <div>
   <%= form_for @resident do |form| %>
+    <% if @resident.errors.any? %>
+      <div class="error_messages">
+        <h2>Form Errors</h2>
+        <ul>
+          <% @resident.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+    <% end %>
     <div>
       <%= form.label "First Name" %>
       <%= form.text_field :first_name %>
@@ -12,22 +21,22 @@
 
     <div>
       <%= form.label "Email" %>
-      <%= form.text_field :email %>
+      <%= form.email_field :email %>
     </div>
 
     <div>
       <%= form.label "Address" %>
-      <%= form.text_area :address %>
+      <%= form.text_field :address %>
     </div>
 
     <div>
       <%= form.label "Home Phone" %>
-      <%= form.text_area :home_phone %>
+      <%= form.text_field :home_phone %>
     </div>
 
     <div>
       <%= form.label "Cell Phone" %>
-      <%= form.text_area :cell_phone %>
+      <%= form.text_field :cell_phone %>
     </div>
 
     <div>
