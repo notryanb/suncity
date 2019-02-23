@@ -22,12 +22,21 @@ class ResidentsController < ApplicationController
   end
 
   def edit
+    @resident = Resident.find_by_id(params[:id])
   end
 
   def update
+    @resident = Resident.find_by_id(params[:id])
+
+    if @resident.update_attributes(resident_params)
+      return redirect_to resident_path(@resident)
+    end
+
+    render :edit
   end
 
   def destroy
+    Resident.find_by_id(params[:id]).destroy
   end
 
   private
